@@ -122,7 +122,7 @@ public class MyString {
         if (str.length() == 0){
             return "";
         }
-    return "[a-z]" + "{" + str.length() + "}";
+    return str;
 }
 
     /**
