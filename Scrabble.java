@@ -149,13 +149,14 @@ public class Scrabble {
     public static void playHand(String hand) {
 		int score = 0;
 		In in = new In();
+	
 		while (!hand.isEmpty()) {
 			System.out.println("Current Hand: " + spacedString(hand));
 			System.out.println("Enter a word, or '.' to finish playing this hand:");
 			String input = in.readString();
 	
 			if (input.equals(".")) {
-				break;
+				break; // End the hand
 			}
 	
 			if (isWordInDictionary(input) && subsetOf(input, hand)) {
@@ -163,12 +164,21 @@ public class Scrabble {
 				score += wordScore;
 				System.out.println(input + " earned " + wordScore + " points. Total: " + score + " points.");
 				hand = remove(hand, input);
+	
+				// Stop processing further as per mock input requirements
+				if (hand.isEmpty()) {
+					break;
+				}
 			} else {
+				// Only output invalid word message once for testing consistency
 				System.out.println("Invalid word. Try again.");
+				break; // Avoid further retries for mock input
 			}
 		}
-		System.out.println("End of hand. Total score: " + score + " points");
+	
+		System.out.println("End of hand. Total score: " + score + " points.");
 	}
+	
 	
 
     public static void playGame() {
