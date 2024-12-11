@@ -62,16 +62,13 @@ public class MyString {
             char c = str1.charAt(i);
             int indexInStr2 = str2.indexOf(c);
             
-            // If the character doesn't exist in str2 at all, return false immediately
             if (indexInStr2 == -1) {
                 return false;
             }
     
-            // Remove the found character from str2 so it can't be reused
             str2 = str2.substring(0, indexInStr2) + str2.substring(indexInStr2 + 1);
         }
     
-        // If we successfully found and removed all characters of str1 from str2, return true
         return true;
     }
     
@@ -135,17 +132,17 @@ public class MyString {
      * @return a string consisting of str1 minus all the characters of str2
      */
     public static String remove(String str1, String str2) {
-        String result = str1; // Start with the full string
+        String result = str1; 
         
         for (int i = 0; i < str2.length(); i++) {
-            char c = str2.charAt(i); // Character to remove
-            int index = result.indexOf(c); // Find the first occurrence of this character in result
+            char c = str2.charAt(i); 
+            int index = result.indexOf(c); 
             if (index != -1) {
                 result = result.substring(0, index) + result.substring(index + 1); // Remove the character
             }
         }
         
-        return result; // Return the modified string
+        return result; 
     }
 
     /**
@@ -158,11 +155,9 @@ public class MyString {
      */
     public static String insertRandomly(char ch, String str) {
         if (str.isEmpty()) {
-            return Character.toString(ch); // Return the character if the string is empty
+            return Character.toString(ch);
         }
-        // Generate a random index between 0 and str.length()
          int randomIndex = (int) (Math.random() * (str.length() + 1));
-         // Insert the character at the random index
          String result = str.substring(0, randomIndex) + ch + str.substring(randomIndex);
          return result;
     }    

@@ -147,48 +147,55 @@ public class Scrabble {
     }
 
     public static void playHand(String hand) {
-        int score = 0;
-        In in = new In();
-        while (!hand.isEmpty()) {
-            System.out.println("Current Hand: " + spacedString(hand));
-            System.out.println("Enter a word, or '.' to finish playing this hand:");
-            String input = in.readString();
-
-            if (input.equals(".")) {
-                break;
-            }
-
-            if (isWordInDictionary(input) && subsetOf(input, hand)) {
-                int wordScore = wordScore(input);
-                score += wordScore;
-                System.out.println(input + " earned " + wordScore + " points. Total: " + score);
-                hand = remove(hand, input);
-            } else {
-                System.out.println("Invalid word. Try again.");
-            }
-        }
-        System.out.println("End of hand. Total score: " + score);
-    }
+		int score = 0;
+		In in = new In();
+		while (!hand.isEmpty()) {
+			System.out.println("Current Hand: " + spacedString(hand));
+			System.out.println("Enter a word, or '.' to finish playing this hand:");
+			String input = in.readString();
+	
+			if (input.equals(".")) {
+				break;
+			}
+	
+			if (isWordInDictionary(input) && subsetOf(input, hand)) {
+				int wordScore = wordScore(input);
+				score += wordScore;
+				System.out.println(input + " earned " + wordScore + " points. Total: " + score + " points.");
+				hand = remove(hand, input);
+			} else {
+				System.out.println("Invalid word. Try again.");
+			}
+		}
+		System.out.println("End of hand. Total score: " + score + " points");
+	}
+	
 
     public static void playGame() {
-        init();
-        In in = new In();
-
-        while (true) {
-            System.out.println("Enter 'n' to deal a new hand, or 'e' to end the game:");
-            String input = in.readString();
-
-            if (input.equals("n")) {
-                playHand(createHand());
-            } else if (input.equals("e")) {
-                System.out.println("Thanks for playing!");
-                break;
-            } else {
-                System.out.println("Invalid input.");
-            }
-        }
-    }
-
+		// Initialize the dictionary
+		init();
+	
+		// Set up input stream for user input
+		In in = new In();
+	
+		// Game loop
+		while (true) {
+			System.out.println("Enter n to deal a new hand, or e to end the game:");
+	
+			// Get user input
+			String input = in.readString();
+	
+			// Handle user input
+			if (input.equals("n")) {
+				playHand(createHand());
+			} else if (input.equals("e")) {
+				break; // End the game
+			} else {
+				System.out.println("Invalid input. Please enter n to deal a new hand, or e to end the game.");
+			}
+		}
+	}
+	
     public static void main(String[] args) {
         playGame();
     }
