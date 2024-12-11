@@ -111,15 +111,19 @@ public class MyString {
             System.err.println("Can not create more than 26 unique charecters");
         }
         String str = "";
-        for (int i = 0; i < n; i++){
+        while (str.length() <= n) {
             char c = (char) (97 + (Math.random() * 26));
             int indexInStr = str.indexOf(c);
             if (indexInStr == -1) {
                 str += c;
             }
+
         }
-        return "[a-z]" + "{" + str.length() + "}";
-    }
+        if (str.length() == 0){
+            return "";
+        }
+    return "[a-z]" + "{" + str.length() + "}";
+}
 
     /**
      * Returns a string consisting of the string str1, minus all the characters in the
