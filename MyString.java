@@ -118,7 +118,7 @@ public class MyString {
                 str += c;
             }
         }
-        return str;
+        return "[a-z]" + "{" + str.length() + "}";
     }
 
     /**
