@@ -165,6 +165,7 @@ public class Scrabble {
 				hand = remove(hand, input);
 			} else {
 				System.out.println("Invalid word. Try again.");
+				break;
 			}
 		}
 		System.out.println("End of hand. Total score: " + score + " points");
