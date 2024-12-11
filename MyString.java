@@ -111,7 +111,7 @@ public class MyString {
             System.err.println("Can not create more than 26 unique charecters");
         }
         String str = "";
-        while (str.length() <= n) {
+        while (str.length() < n) {
             char c = (char) (97 + (Math.random() * 26));
             int indexInStr = str.indexOf(c);
             if (indexInStr == -1) {
